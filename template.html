@@ -42,6 +42,7 @@ body{
   radial-gradient(58% 40% at 22% 14%, rgba(18,138,99,.30), transparent 70%),
   radial-gradient(50% 46% at 84% 78%, rgba(11,79,57,.42), transparent 72%);
   animation:pulse 14s ease-in-out infinite alternate}
+.bg__logo{position:absolute;inset:0;margin:auto;width:min(150vw,760px);height:min(150vw,806px);background:url(__LOGO__) center/contain no-repeat;opacity:.06;pointer-events:none;will-change:transform;filter:drop-shadow(0 0 50px rgba(47,211,154,.16))}
 .bg__vignette{position:absolute;inset:0;background:
   radial-gradient(120% 90% at 50% 0%, transparent 40%, rgba(5,7,6,.55) 78%, rgba(5,7,6,.95) 100%)}
 .bg__grain{position:absolute;inset:0;opacity:.05;mix-blend-mode:overlay;
@@ -82,11 +83,12 @@ h2{font-size:clamp(34px,10vw,52px);margin-bottom:16px}
 .hero h1{font-size:clamp(50px,15.5vw,112px);letter-spacing:.004em;overflow-wrap:break-word}
 .hero h1 .g{color:transparent;-webkit-text-stroke:1.4px var(--emerald-bright);background:linear-gradient(180deg,var(--mint),var(--emerald));-webkit-background-clip:text;background-clip:text;display:inline-block}
 .hero .lede{margin-top:18px;font-size:18px}
-.beadwrap{margin-top:30px;border-radius:18px;overflow:hidden;position:relative;aspect-ratio:16/10;cursor:pointer;touch-action:manipulation}
-.beadwrap canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
-.beadwrap .cap{position:absolute;left:0;right:0;bottom:0;padding:34px 16px 13px;font-family:'Barlow';font-weight:600;font-size:12.5px;letter-spacing:.04em;color:var(--white);background:linear-gradient(180deg,transparent,rgba(4,7,6,.82));z-index:2}
-.beadwrap .taphint{position:absolute;top:12px;right:13px;z-index:2;font-family:'Barlow';font-weight:700;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--void);background:var(--emerald-bright);padding:6px 10px;border-radius:999px;box-shadow:0 4px 14px rgba(47,211,154,.4);animation:bob 2.4s ease-in-out infinite}
-@keyframes bob{50%{transform:translateY(-3px)}}
+.glosspanel{margin-top:30px;border-radius:16px;overflow:hidden;position:relative;aspect-ratio:16/9;background:radial-gradient(130% 150% at 28% 0%,#13281f 0%,#0a1613 42%,#050d0a 100%)}
+.glosspanel .sweep{position:absolute;top:-25%;bottom:-25%;width:55%;left:-55%;transform:skewX(-13deg);filter:blur(3px);background:linear-gradient(90deg,transparent,rgba(125,255,207,.10) 38%,rgba(255,255,255,.42) 50%,rgba(125,255,207,.10) 62%,transparent);animation:sweep 5.6s ease-in-out infinite}
+.glosspanel .horizon{position:absolute;left:0;right:0;top:18%;height:42%;background:linear-gradient(180deg,rgba(125,255,207,.06),transparent);pointer-events:none}
+.glosspanel .cap{position:absolute;left:0;right:0;bottom:0;padding:38px 18px 15px;font-family:'Barlow';font-weight:600;font-size:13px;letter-spacing:.01em;color:var(--white);background:linear-gradient(180deg,transparent,rgba(4,7,6,.86));z-index:3}
+.glosspanel .cap b{color:var(--mint);font-weight:700}
+@keyframes sweep{0%{left:-55%;opacity:0}12%{opacity:1}80%{opacity:1}100%{left:135%;opacity:0}}
 .scrollcue{margin-top:26px;display:flex;align-items:center;gap:10px;color:var(--muted);font-family:'Barlow';font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase}
 .scrollcue span{width:1px;height:30px;background:linear-gradient(var(--emerald-bright),transparent);animation:cue 1.8s ease-in-out infinite}
 @keyframes cue{0%,100%{transform:scaleY(.4);transform-origin:top;opacity:.4}50%{transform:scaleY(1);opacity:1}}
@@ -188,7 +190,7 @@ footer .loc{color:var(--muted);font-size:12.5px;letter-spacing:.16em;text-transf
 
 @media(min-width:560px){.callbar{display:none}footer{padding-bottom:56px}}
 @media(prefers-reduced-motion:reduce){
-  .bg__a,.bg__b,.bg__glow,.taphint,.scrollcue span{animation:none!important}
+  .bg__a,.bg__b,.bg__glow,.glosspanel .sweep,.scrollcue span{animation:none!important}
   .reveal{opacity:1;transform:none}
   html{scroll-behavior:auto}
 }
@@ -199,6 +201,7 @@ footer .loc{color:var(--muted);font-size:12.5px;letter-spacing:.16em;text-transf
   <div class="bg__layer bg__a"></div>
   <div class="bg__layer bg__b"></div>
   <div class="bg__glow"></div>
+  <div class="bg__logo" id="bgLogo"></div>
   <div class="bg__vignette"></div>
   <div class="bg__grain"></div>
 </div>
@@ -220,10 +223,10 @@ footer .loc{color:var(--muted);font-size:12.5px;letter-spacing:.16em;text-transf
     <h1>KEEP&nbsp;IT<br><span class="g">GLASSY</span></h1>
     <p class="lede">Your car is now protected by a ceramic coating. A few simple habits keep that deep gloss and water beading going for years. Here is everything you need.</p>
 
-    <div class="beadwrap framed" id="bead">
-      <canvas id="beadCanvas"></canvas>
-      <span class="taphint">Tap me</span>
-      <div class="cap">That beading is your coating doing its job. Water rolls off instead of soaking in.</div>
+    <div class="glosspanel framed">
+      <div class="horizon"></div>
+      <div class="sweep"></div>
+      <div class="cap"><b>Sealed and slick.</b> Dirt and water slide off instead of sticking, so it stays cleaner and washes off far easier.</div>
     </div>
 
     <div class="scrollcue"><span></span> Scroll for your care guide</div>
@@ -441,66 +444,20 @@ footer .loc{color:var(--muted);font-size:12.5px;letter-spacing:.16em;text-transf
     var card=e.target.closest('.flip'); if(card) card.classList.toggle('is-flipped');
   });
 
-  /* ---- Water beading canvas ---- */
-  var wrap=document.getElementById('bead'), cv=document.getElementById('beadCanvas'), ctx=cv.getContext('2d');
-  var W,H,dpr,beads=[],raf;
-  function size(){
-    dpr=Math.min(window.devicePixelRatio||1,2);
-    W=cv.clientWidth; H=cv.clientHeight;
-    cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
-    seed();
-  }
-  function Bead(x,y,r){this.x=x;this.y=y;this.r=r;this.vy=0;this.base=x;this.wob=Math.random()*6.28;}
-  function seed(){
-    beads=[]; var n=Math.round((W*H)/5200);
-    n=Math.max(26,Math.min(n,80));
-    for(var i=0;i<n;i++){
-      var r=3+Math.random()*Math.random()*15;
-      beads.push(new Bead(Math.random()*W, Math.random()*H, r));
+  /* ---- Background logo parallax ---- */
+  var bgLogo=document.getElementById('bgLogo');
+  if(bgLogo && !reduce){
+    var ticking=false;
+    function onScroll(){
+      if(ticking) return; ticking=true;
+      requestAnimationFrame(function(){
+        var y=window.pageYOffset||document.documentElement.scrollTop||0;
+        bgLogo.style.transform='translate3d(0,'+(y*0.08)+'px,0) scale('+(1+Math.min(y/9000,0.12))+')';
+        ticking=false;
+      });
     }
-    beads.sort(function(a,b){return a.r-b.r;});
+    window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
   }
-  function drawBead(b){
-    var g=ctx.createRadialGradient(b.x-b.r*.35,b.y-b.r*.4,b.r*.1, b.x,b.y,b.r);
-    g.addColorStop(0,'rgba(210,255,238,.95)');
-    g.addColorStop(.25,'rgba(90,190,158,.55)');
-    g.addColorStop(.7,'rgba(10,40,32,.45)');
-    g.addColorStop(1,'rgba(4,10,8,.15)');
-    ctx.beginPath(); ctx.arc(b.x,b.y,b.r,0,6.2832); ctx.fillStyle=g; ctx.fill();
-    // rim light
-    ctx.beginPath(); ctx.arc(b.x,b.y,b.r,-2.4,-0.6); ctx.strokeStyle='rgba(47,211,154,.5)'; ctx.lineWidth=Math.max(.6,b.r*.09); ctx.stroke();
-    // specular
-    ctx.beginPath(); ctx.arc(b.x-b.r*.34,b.y-b.r*.4,Math.max(.8,b.r*.22),0,6.2832); ctx.fillStyle='rgba(255,255,255,.9)'; ctx.fill();
-  }
-  var t=0;
-  function frame(){
-    t+=0.016;
-    // glossy dark panel base
-    var bg=ctx.createLinearGradient(0,0,W,H);
-    bg.addColorStop(0,'#0a1512'); bg.addColorStop(.5,'#05100c'); bg.addColorStop(1,'#0b1a15');
-    ctx.fillStyle=bg; ctx.fillRect(0,0,W,H);
-    // soft emerald sheen
-    var sh=ctx.createRadialGradient(W*.3,H*.2,0,W*.3,H*.2,W*.8);
-    sh.addColorStop(0,'rgba(24,138,99,.22)'); sh.addColorStop(1,'rgba(0,0,0,0)');
-    ctx.fillStyle=sh; ctx.fillRect(0,0,W,H);
-    for(var i=0;i<beads.length;i++){
-      var b=beads[i];
-      if(!reduce){
-        b.x=b.base+Math.sin(t+b.wob)*1.2;              // gentle wobble
-        if(b.r>9){ b.vy+=0.02; b.y+=b.vy;                // big beads slide down
-          if(b.y-b.r>H){ b.y=-b.r; b.vy=0; b.base=Math.random()*W; b.x=b.base; b.r=3+Math.random()*Math.random()*15; } }
-      }
-      drawBead(b);
-    }
-    raf=requestAnimationFrame(frame);
-  }
-  function burst(){ // on tap: re-bead
-    beads.forEach(function(b){ b.r=2+Math.random()*Math.random()*16; b.y=Math.random()*H; b.base=Math.random()*W; b.x=b.base; b.vy=0; });
-    var hint=wrap.querySelector('.taphint'); if(hint) hint.style.display='none';
-  }
-  wrap.addEventListener('click',burst);
-  size(); if(!reduce){frame();} else {frame(); cancelAnimationFrame(raf); frame();}
-  var rt; window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(size,180);});
 })();
 </script>
 </body>
