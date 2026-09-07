@@ -26,6 +26,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html,body{max-width:100%;overflow-x:clip}
 body{
   font-family:'Barlow',system-ui,sans-serif;font-weight:500;
   background:var(--void);color:var(--white);
@@ -71,12 +72,14 @@ h2{font-size:clamp(34px,10vw,52px);margin-bottom:16px}
 .brand{display:flex;align-items:center;gap:11px}
 .brand img{width:46px;height:auto;display:block;filter:drop-shadow(0 3px 8px rgba(0,0,0,.6))}
 .brand b{font-family:'Barlow';font-weight:700;font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--white)}
-.top a.ig{font-family:'Barlow';font-weight:600;font-size:12.5px;letter-spacing:.06em;color:var(--mist);text-decoration:none;border:1px solid var(--line);padding:8px 13px;border-radius:999px;transition:.3s}
+.top a.ig{font-family:'Barlow';font-weight:600;font-size:12.5px;letter-spacing:.04em;color:var(--mist);text-decoration:none;border:1px solid var(--line);padding:8px 13px;border-radius:999px;transition:.3s;white-space:nowrap;flex:none}
 .top a.ig:hover{color:var(--white);border-color:var(--line-strong)}
+.brand b{white-space:nowrap}
+@media(max-width:400px){.top a.ig{display:none}}
 
 /* ---------- Hero ---------- */
 .hero{padding-top:34px;padding-bottom:34px;text-align:left}
-.hero h1{font-size:clamp(58px,20vw,116px);letter-spacing:.005em}
+.hero h1{font-size:clamp(50px,15.5vw,112px);letter-spacing:.004em;overflow-wrap:break-word}
 .hero h1 .g{color:transparent;-webkit-text-stroke:1.4px var(--emerald-bright);background:linear-gradient(180deg,var(--mint),var(--emerald));-webkit-background-clip:text;background-clip:text;display:inline-block}
 .hero .lede{margin-top:18px;font-size:18px}
 .beadwrap{margin-top:30px;border-radius:18px;overflow:hidden;position:relative;aspect-ratio:16/10;cursor:pointer;touch-action:manipulation}
