@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#060908">
+<title>OMA Auto Detailing · Ceramic Coating Care</title>
+<meta name="description" content="Your car is ceramic coated. Here is how to keep the gloss and water beading for years. Aftercare from OMA Auto Detailing.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23060908'/%3E%3Cpath d='M16 6a10 10 0 100 20 10 10 0 000-20zm0 4a6 6 0 016 6c0 3-6 10-6 10s-6-7-6-10a6 6 0 016-6z' fill='%232fd39a'/%3E%3C/svg%3E">
+<style>
+/* ------- Embedded brand fonts (subset woff2) ------- */
+@font-face{font-family:'Anton';font-style:normal;font-weight:400;font-display:swap;src:url(__ANTON__) format('woff2');}
+@font-face{font-family:'Barlow';font-style:normal;font-weight:500;font-display:swap;src:url(__BAR_MED__) format('woff2');}
+@font-face{font-family:'Barlow';font-style:normal;font-weight:600;font-display:swap;src:url(__BAR_SB__) format('woff2');}
+@font-face{font-family:'Barlow';font-style:normal;font-weight:700;font-display:swap;src:url(__BAR_BOLD__) format('woff2');}
+
+:root{
+  --void:#050706; --ground:#080b0a; --panel:#0c110f; --panel-2:#0f1512;
+  --emerald-deep:#0b4f39; --emerald:#128a63; --emerald-bright:#2fd39a; --mint:#7dffcf;
+  --white:#f4f8f6; --mist:#aebbb5; --muted:#71807a;
+  --vein:rgba(228,241,235,.92);
+  --line:rgba(120,205,172,.15);
+  --line-strong:rgba(120,205,172,.32);
+  --shadow:0 26px 60px -24px rgba(0,0,0,.85);
+  --ease:cubic-bezier(.19,1,.22,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:'Barlow',system-ui,sans-serif;font-weight:500;
+  background:var(--void);color:var(--white);
+  line-height:1.6;overflow-x:hidden;position:relative;
+  -webkit-font-smoothing:antialiased;
+}
+/* ---------- Living marble background ---------- */
+.bg{position:fixed;inset:0;z-index:-3;overflow:hidden;background:var(--void)}
+.bg__layer{position:absolute;inset:-18%;background-size:cover;background-position:center;will-change:transform}
+.bg__a{background-image:url(__MARBLE_AMB__);opacity:.9;animation:driftA 70s var(--ease) infinite alternate}
+.bg__b{background-image:url(__MARBLE_AMB__);opacity:.4;transform:scale(1.4) rotate(180deg);animation:driftB 96s var(--ease) infinite alternate;mix-blend-mode:screen}
+.bg__glow{position:absolute;inset:0;background:
+  radial-gradient(58% 40% at 22% 14%, rgba(18,138,99,.30), transparent 70%),
+  radial-gradient(50% 46% at 84% 78%, rgba(11,79,57,.42), transparent 72%);
+  animation:pulse 14s ease-in-out infinite alternate}
+.bg__vignette{position:absolute;inset:0;background:
+  radial-gradient(120% 90% at 50% 0%, transparent 40%, rgba(5,7,6,.55) 78%, rgba(5,7,6,.95) 100%)}
+.bg__grain{position:absolute;inset:0;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+@keyframes driftA{from{transform:scale(1.18) translate3d(-2%,-1%,0)}to{transform:scale(1.28) translate3d(3%,2%,0)}}
+@keyframes driftB{from{transform:scale(1.4) rotate(180deg) translate3d(2%,1%,0)}to{transform:scale(1.5) rotate(180deg) translate3d(-3%,-2%,0)}}
+@keyframes pulse{from{opacity:.7}to{opacity:1}}
+
+/* ---------- Layout ---------- */
+.wrap{width:100%;max-width:640px;margin:0 auto;padding:0 22px;position:relative}
+section{padding:60px 0;position:relative}
+.eyebrow{font-family:'Barlow';font-weight:700;font-size:12px;letter-spacing:.42em;text-transform:uppercase;color:var(--emerald-bright);display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--emerald-bright);opacity:.8}
+h1,h2,h3{font-family:'Anton';font-weight:400;text-transform:uppercase;line-height:.94;letter-spacing:.01em}
+h2{font-size:clamp(34px,10vw,52px);margin-bottom:16px}
+.lede{color:var(--mist);font-size:17px;max-width:44ch}
+.vein-rule{height:1px;background:linear-gradient(90deg,transparent,var(--line-strong) 20%,var(--vein) 50%,var(--line-strong) 80%,transparent);opacity:.5;margin:0 auto;max-width:640px}
+
+/* corner-bracket frame device */
+.framed{position:relative;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,rgba(15,21,18,.72),rgba(8,11,10,.72));backdrop-filter:blur(6px);box-shadow:var(--shadow)}
+.framed::before,.framed::after{content:"";position:absolute;width:16px;height:16px;border:2px solid var(--emerald-bright);opacity:.85}
+.framed::before{top:-1px;left:-1px;border-right:0;border-bottom:0;border-top-left-radius:16px}
+.framed::after{bottom:-1px;right:-1px;border-left:0;border-top:0;border-bottom-right-radius:16px}
+
+/* ---------- Header ---------- */
+.top{position:relative;z-index:5;padding-top:calc(env(safe-area-inset-top) + 22px)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:11px}
+.brand img{width:46px;height:auto;display:block;filter:drop-shadow(0 3px 8px rgba(0,0,0,.6))}
+.brand b{font-family:'Barlow';font-weight:700;font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--white)}
+.top a.ig{font-family:'Barlow';font-weight:600;font-size:12.5px;letter-spacing:.06em;color:var(--mist);text-decoration:none;border:1px solid var(--line);padding:8px 13px;border-radius:999px;transition:.3s}
+.top a.ig:hover{color:var(--white);border-color:var(--line-strong)}
+
+/* ---------- Hero ---------- */
+.hero{padding-top:34px;padding-bottom:34px;text-align:left}
+.hero h1{font-size:clamp(58px,20vw,116px);letter-spacing:.005em}
+.hero h1 .g{color:transparent;-webkit-text-stroke:1.4px var(--emerald-bright);background:linear-gradient(180deg,var(--mint),var(--emerald));-webkit-background-clip:text;background-clip:text;display:inline-block}
+.hero .lede{margin-top:18px;font-size:18px}
+.beadwrap{margin-top:30px;border-radius:18px;overflow:hidden;position:relative;aspect-ratio:16/10;cursor:pointer;touch-action:manipulation}
+.beadwrap canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.beadwrap .cap{position:absolute;left:0;right:0;bottom:0;padding:34px 16px 13px;font-family:'Barlow';font-weight:600;font-size:12.5px;letter-spacing:.04em;color:var(--white);background:linear-gradient(180deg,transparent,rgba(4,7,6,.82));z-index:2}
+.beadwrap .taphint{position:absolute;top:12px;right:13px;z-index:2;font-family:'Barlow';font-weight:700;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--void);background:var(--emerald-bright);padding:6px 10px;border-radius:999px;box-shadow:0 4px 14px rgba(47,211,154,.4);animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-3px)}}
+.scrollcue{margin-top:26px;display:flex;align-items:center;gap:10px;color:var(--muted);font-family:'Barlow';font-weight:600;font-size:11px;letter-spacing:.22em;text-transform:uppercase}
+.scrollcue span{width:1px;height:30px;background:linear-gradient(var(--emerald-bright),transparent);animation:cue 1.8s ease-in-out infinite}
+@keyframes cue{0%,100%{transform:scaleY(.4);transform-origin:top;opacity:.4}50%{transform:scaleY(1);opacity:1}}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- Timeline ---------- */
+.tl-tabs{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap}
+.tl-tab{flex:1;min-width:96px;font-family:'Barlow';font-weight:700;text-align:left;background:rgba(12,17,15,.6);border:1px solid var(--line);color:var(--mist);border-radius:12px;padding:12px 13px;cursor:pointer;transition:.35s var(--ease);position:relative;overflow:hidden}
+.tl-tab .n{font-family:'Anton';font-size:22px;color:var(--emerald-bright);display:block;line-height:1}
+.tl-tab .t{font-size:11px;letter-spacing:.13em;text-transform:uppercase;display:block;margin-top:6px}
+.tl-tab[aria-selected="true"]{color:var(--white);border-color:var(--line-strong);background:linear-gradient(180deg,rgba(18,138,99,.22),rgba(12,17,15,.7))}
+.tl-tab[aria-selected="true"] .n{color:var(--mint)}
+.tl-panel{display:none}
+.tl-panel.active{display:block;animation:fadeUp .6s var(--ease)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.tl-panel h3{font-size:26px;margin-bottom:6px}
+.tl-panel .sub{color:var(--emerald-bright);font-family:'Barlow';font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px}
+
+/* cure gauge */
+.gauge{display:flex;align-items:center;gap:20px;margin:6px 0 22px;padding:18px;border-radius:14px;background:rgba(8,11,10,.55);border:1px solid var(--line)}
+.gauge svg{width:104px;height:104px;flex:none;transform:rotate(-90deg)}
+.gauge .track{fill:none;stroke:rgba(120,205,172,.14);stroke-width:9}
+.gauge .fill{fill:none;stroke:url(#gg);stroke-width:9;stroke-linecap:round;stroke-dasharray:283;stroke-dashoffset:283;transition:stroke-dashoffset 2.2s var(--ease)}
+.gauge .pct{font-family:'Anton';font-size:34px;line-height:1}
+.gauge .pct small{font-family:'Barlow';font-weight:700;font-size:13px;color:var(--mist);display:block;letter-spacing:.14em;text-transform:uppercase;margin-top:4px}
+
+/* rule list */
+.rules{list-style:none;display:grid;gap:2px}
+.rules li{display:flex;gap:14px;align-items:flex-start;padding:14px 4px;border-bottom:1px solid var(--line)}
+.rules li:last-child{border-bottom:0}
+.rules .ic{flex:none;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-family:'Barlow';font-weight:700;font-size:15px;margin-top:1px}
+.rules .yes .ic{background:rgba(47,211,154,.16);color:var(--mint);border:1px solid rgba(47,211,154,.4)}
+.rules .no .ic{background:rgba(255,90,110,.12);color:#ff8497;border:1px solid rgba(255,90,110,.35)}
+.rules b{font-weight:700;color:var(--white)}
+.rules p{color:var(--mist);font-size:14.5px;margin-top:2px}
+
+/* ---------- Wash steps (accordion) ---------- */
+.steps{display:grid;gap:10px}
+.step{border:1px solid var(--line);border-radius:14px;background:rgba(12,17,15,.55);overflow:hidden}
+.step summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:16px 18px;font-family:'Barlow';font-weight:700;font-size:16px;color:var(--white)}
+.step summary::-webkit-details-marker{display:none}
+.step .num{font-family:'Anton';font-size:26px;color:var(--emerald-bright);flex:none;width:30px}
+.step summary .chev{margin-left:auto;color:var(--emerald-bright);transition:transform .4s var(--ease);flex:none}
+.step[open] summary .chev{transform:rotate(45deg)}
+.step .body{padding:0 18px 18px 64px;color:var(--mist);font-size:14.5px;animation:fadeUp .4s var(--ease)}
+.step .body b{color:var(--white);font-weight:700}
+.note{border-left:2px solid var(--emerald-bright);background:rgba(18,138,99,.1);border-radius:0 12px 12px 0;padding:13px 16px;font-size:14px;color:var(--mist);margin-bottom:16px}
+.note b{color:var(--emerald-bright);font-weight:700}
+
+/* ---------- Flip cards (Do / Don't) ---------- */
+.flipgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.flip{perspective:1000px;height:150px;cursor:pointer}
+.flip__in{position:relative;width:100%;height:100%;transition:transform .7s var(--ease);transform-style:preserve-3d}
+.flip.is-flipped .flip__in{transform:rotateY(180deg)}
+.flip__f,.flip__b{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;border:1px solid var(--line)}
+.flip__f{background:linear-gradient(180deg,rgba(15,21,18,.82),rgba(8,11,10,.82))}
+.flip__b{transform:rotateY(180deg);background:linear-gradient(180deg,rgba(18,138,99,.2),rgba(8,11,10,.9))}
+.flip .tag{font-family:'Barlow';font-weight:700;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+.flip.do .tag{color:var(--mint)}
+.flip.dont .tag{color:#ff8497}
+.flip h4{font-family:'Anton';font-size:20px;text-transform:uppercase;line-height:1;color:var(--white)}
+.flip__f .hint{font-family:'Barlow';font-weight:600;font-size:11px;color:var(--muted);letter-spacing:.04em}
+.flip__b p{font-size:13.5px;color:var(--mist)}
+
+/* ---------- Trouble ---------- */
+.trouble{display:grid;gap:12px}
+.tcard{padding:18px;border-radius:14px;border:1px solid var(--line);background:rgba(12,17,15,.55)}
+.tcard h4{font-family:'Anton';font-size:19px;text-transform:uppercase;color:var(--white);margin-bottom:5px}
+.tcard p{color:var(--mist);font-size:14.5px}
+.tcard .fix{color:var(--emerald-bright);font-weight:700;font-size:12.5px;letter-spacing:.05em;margin-top:8px;display:inline-block}
+
+/* ---------- Maintenance CTA ---------- */
+.mcta{overflow:hidden;padding:36px 26px;text-align:center;border-radius:20px;
+  background:linear-gradient(150deg,rgba(18,138,99,.34),rgba(11,79,57,.2) 55%,rgba(8,11,10,.6));border:1px solid var(--line-strong);position:relative}
+.mcta h2{font-size:clamp(32px,9vw,46px)}
+.mcta p{color:var(--mist);max-width:34ch;margin:10px auto 24px}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:'Barlow';font-weight:700;letter-spacing:.05em;text-decoration:none;padding:15px 26px;border-radius:999px;transition:.3s var(--ease)}
+.btn--go{background:var(--emerald-bright);color:var(--void);box-shadow:0 12px 30px -8px rgba(47,211,154,.55)}
+.btn--go:hover{transform:translateY(-2px);box-shadow:0 18px 40px -10px rgba(47,211,154,.7)}
+.btn--ghost{border:1px solid var(--line-strong);color:var(--white)}
+.ctarow{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* ---------- Footer ---------- */
+footer{padding:56px 0 130px;text-align:center}
+footer .flogo{width:120px;margin:0 auto 20px;display:block;opacity:.95}
+footer .fnum{font-family:'Anton';font-size:clamp(30px,9vw,42px);color:var(--white);text-decoration:none;display:inline-block;letter-spacing:.02em}
+footer .fig{display:block;color:var(--emerald-bright);font-weight:700;letter-spacing:.08em;text-decoration:none;margin-top:8px}
+footer .loc{color:var(--muted);font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;margin-top:18px}
+
+/* ---------- Sticky call bar (mobile) ---------- */
+.callbar{position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;gap:10px;padding:12px 16px calc(env(safe-area-inset-bottom) + 12px);
+  background:linear-gradient(180deg,transparent,rgba(5,7,6,.9) 30%);}
+.callbar a{flex:1;text-align:center;font-family:'Barlow';font-weight:700;letter-spacing:.04em;text-decoration:none;padding:15px;border-radius:14px}
+.callbar .call{background:var(--emerald-bright);color:var(--void)}
+.callbar .ig2{background:rgba(12,17,15,.9);color:var(--white);border:1px solid var(--line-strong)}
+
+@media(min-width:560px){.callbar{display:none}footer{padding-bottom:56px}}
+@media(prefers-reduced-motion:reduce){
+  .bg__a,.bg__b,.bg__glow,.taphint,.scrollcue span{animation:none!important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true">
+  <div class="bg__layer bg__a"></div>
+  <div class="bg__layer bg__b"></div>
+  <div class="bg__glow"></div>
+  <div class="bg__vignette"></div>
+  <div class="bg__grain"></div>
+</div>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <img src="__LOGO__" alt="OMA Auto Detailing">
+      <b>Auto&nbsp;Detailing</b>
+    </div>
+    <a class="ig" href="https://instagram.com/oma.autodetailing" target="_blank" rel="noopener">@oma.autodetailing</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Ceramic Coating Care</p>
+    <h1>KEEP&nbsp;IT<br><span class="g">GLASSY</span></h1>
+    <p class="lede">Your car is now protected by a ceramic coating. A few simple habits keep that deep gloss and water beading going for years. Here is everything you need.</p>
+
+    <div class="beadwrap framed" id="bead">
+      <canvas id="beadCanvas"></canvas>
+      <span class="taphint">Tap me</span>
+      <div class="cap">That beading is your coating doing its job. Water rolls off instead of soaking in.</div>
+    </div>
+
+    <div class="scrollcue"><span></span> Scroll for your care guide</div>
+  </div>
+</section>
+
+<div class="vein-rule"></div>
+
+<!-- TIMELINE -->
+<section>
+  <div class="wrap reveal">
+    <p class="eyebrow">The first stretch</p>
+    <h2>Give it<br>time to bond</h2>
+    <p class="lede" style="margin-bottom:26px">The coating keeps hardening after we hand the car back. Treat it gently early and it locks in for the long run.</p>
+
+    <div class="tl-tabs" role="tablist" aria-label="Aftercare timeline">
+      <button class="tl-tab" role="tab" aria-selected="true" data-tab="t1"><span class="n">48h</span><span class="t">First 2 days</span></button>
+      <button class="tl-tab" role="tab" aria-selected="false" data-tab="t2"><span class="n">7d</span><span class="t">First week</span></button>
+      <button class="tl-tab" role="tab" aria-selected="false" data-tab="t3"><span class="n">Ongoing</span><span class="t">Living with it</span></button>
+    </div>
+
+    <div class="tl-panel active" id="t1" role="tabpanel">
+      <h3>The first 48 hours</h3>
+      <p class="sub">Curing · keep it dry</p>
+      <div class="gauge">
+        <svg viewBox="0 0 100 100">
+          <defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7dffcf"/><stop offset="1" stop-color="#128a63"/></linearGradient></defs>
+          <circle class="track" cx="50" cy="50" r="45"/>
+          <circle class="fill" id="gaugeFill" cx="50" cy="50" r="45"/>
+        </svg>
+        <div><div class="pct"><span id="gaugeNum">0</span>%<small>Curing</small></div></div>
+      </div>
+      <ul class="rules">
+        <li class="no"><span class="ic">&times;</span><div><b>Do not wash it.</b><p>No water, no wiping, not even to knock dust off. The coating is still setting.</p></div></li>
+        <li class="no"><span class="ic">&times;</span><div><b>First 24 hours, keep it completely dry.</b><p>No rain, no sprinklers, no sitting water while it is green. Park undercover if you can.</p></div></li>
+        <li class="yes"><span class="ic">&check;</span><div><b>After the first day, light rain is fine.</b><p>Just do not let water pool and dry on it. If it does get wet, gently pat it dry with a clean soft towel. Do not rub.</p></div></li>
+        <li class="yes"><span class="ic">&check;</span><div><b>Bird mess or sap is the one exception.</b><p>If something lands on it, gently flood it with water or lay a damp cloth over it with no pressure, then pat dry. Do not scrub. Or just call us.</p></div></li>
+        <li class="yes"><span class="ic">&check;</span><div><b>Otherwise just drive it.</b><p>Driving is completely fine. It is standing water drying on the paint that you want to avoid.</p></div></li>
+      </ul>
+    </div>
+
+    <div class="tl-panel" id="t2" role="tabpanel">
+      <h3>The first week</h3>
+      <p class="sub">Settling in</p>
+      <ul class="rules">
+        <li class="no"><span class="ic">&times;</span><div><b>Hold off on washing for 7 days.</b><p>Give the coating a full week before its first proper wash so it can finish hardening.</p></div></li>
+        <li class="no"><span class="ic">&times;</span><div><b>Nothing harsh on the paint.</b><p>No degreasers, no traffic film removers, no waxes or polishes. The coating is the protection now.</p></div></li>
+        <li class="yes"><span class="ic">&check;</span><div><b>Rinse off bird mess and bugs straight away.</b><p>A gentle hose rinse is fine if something lands on it. Do not scrub. More on that below.</p></div></li>
+        <li class="yes"><span class="ic">&check;</span><div><b>Watch it bead.</b><p>Next time it rains, notice how the water balls up and runs off. That is the coating working.</p></div></li>
+      </ul>
+    </div>
+
+    <div class="tl-panel" id="t3" role="tabpanel">
+      <h3>From then on</h3>
+      <p class="sub">The easy part</p>
+      <ul class="rules">
+        <li class="no"><span class="ic">&times;</span><div><b>Never use automatic or brush car washes.</b><p>The brushes swirl the coating and the harsh sprays strip it. Hand wash only. A touchless wash is okay in a pinch.</p></div></li>
+        <li class="yes"><span class="ic">&check;</span><div><b>Wash every couple of weeks.</b><p>A coated car stays cleaner for longer and washes off far easier. A fortnightly wash keeps it looking its best.</p></div></li>
+        <li class="yes"><span class="ic">&check;</span><div><b>Use the wash routine below.</b><p>pH neutral shampoo, two buckets, soft mitt, dry it off. That is the whole trick.</p></div></li>
+        <li class="yes"><span class="ic">&check;</span><div><b>Book a maintenance wash with OMA.</b><p>Every few months we can refresh the coating and keep the beading strong. Details at the bottom.</p></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="vein-rule"></div>
+
+<!-- WASH DAY -->
+<section>
+  <div class="wrap reveal">
+    <p class="eyebrow">Wash day</p>
+    <h2>How to wash<br>a coated car</h2>
+    <p class="lede" style="margin-bottom:20px">Tap each step. The order matters more than the effort. This is gentle, quick, and keeps the surface flawless.</p>
+    <div class="note"><b>Golden rule.</b> Always wash in the shade, on a cool panel, never in direct sun. In the Queensland heat a sunny panel flash dries the water and leaves spots.</div>
+    <div class="steps">
+      <details class="step" open><summary><span class="num">1</span> Rinse before you touch it <span class="chev">+</span></summary>
+        <div class="body">Blast the car with a hose or pressure washer first. This floats off grit and dust so you are not dragging it across the paint. <b>Never wipe a dry, dusty coated car.</b></div></details>
+      <details class="step"><summary><span class="num">2</span> Two buckets, pH neutral shampoo <span class="chev">+</span></summary>
+        <div class="body">One bucket of suds with a <b>pH neutral, ceramic safe car shampoo</b>, one bucket of clean rinse water. Dunk and rinse your mitt in the clean bucket between panels so dirt never goes back on the car. A grit guard in each bucket helps, and keep a separate mitt for the lower doors and wheels since they carry the most grit.</div></details>
+      <details class="step"><summary><span class="num">3</span> Soft mitt, straight lines <span class="chev">+</span></summary>
+        <div class="body">Use a clean, soft microfibre wash mitt. Wash top to bottom in <b>straight lines</b>, not circles. Light pressure only. The coating does the work, you are just lifting dirt.</div></details>
+      <details class="step"><summary><span class="num">4</span> Rinse it all off <span class="chev">+</span></summary>
+        <div class="body">Rinse every panel thoroughly so no soap dries on the surface. Watch the water sheet straight off. A coated car rinses cleaner than you are used to.</div></details>
+      <details class="step"><summary><span class="num">5</span> Dry it, do not let it air dry <span class="chev">+</span></summary>
+        <div class="body">Dry with a clean soft microfibre towel or a blower. <b>Letting it air dry is the number one cause of water spots.</b> To avoid fine swirls, do not drag the towel across dry paint. Blow the water off first, or mist a drying aid for slip, then blot and pat rather than wipe.</div></details>
+    </div>
+    <div class="note" style="margin-top:12px"><b>Optional boost.</b> A spray sealant topper brings the beading right back, but not in the first 7 days. Apply it thin, in the shade on a cool panel, follow the directions on the bottle, and buff off every bit of residue with a clean dry cloth or it can streak.</div>
+  </div>
+</section>
+
+<div class="vein-rule"></div>
+
+<!-- DO / DON'T -->
+<section>
+  <div class="wrap reveal">
+    <p class="eyebrow">The short version</p>
+    <h2>Do &amp; don't</h2>
+    <p class="lede" style="margin-bottom:24px">Tap a card to flip it.</p>
+    <div class="flipgrid" id="flipgrid">
+      <div class="flip do"><div class="flip__in">
+        <div class="flip__f"><span class="tag">Do</span><h4>Rinse first</h4><span class="hint">tap</span></div>
+        <div class="flip__b"><span class="tag">Do</span><p>Always hose the car down before touching it, so grit floats off instead of scratching.</p></div></div></div>
+      <div class="flip dont"><div class="flip__in">
+        <div class="flip__f"><span class="tag">Don't</span><h4>Auto car wash</h4><span class="hint">tap</span></div>
+        <div class="flip__b"><span class="tag">Don't</span><p>Brush and roller washes drag grit and harsh chemicals across your paint. Hand wash only.</p></div></div></div>
+      <div class="flip do"><div class="flip__in">
+        <div class="flip__f"><span class="tag">Do</span><h4>pH neutral soap</h4><span class="hint">tap</span></div>
+        <div class="flip__b"><span class="tag">Do</span><p>Use a gentle, ceramic safe shampoo. It cleans without stripping the coating.</p></div></div></div>
+      <div class="flip dont"><div class="flip__in">
+        <div class="flip__f"><span class="tag">Don't</span><h4>Wax or polish</h4><span class="hint">tap</span></div>
+        <div class="flip__b"><span class="tag">Don't</span><p>No waxes, polishes or cutting compounds. They just smear over the coating and do nothing good.</p></div></div></div>
+      <div class="flip do"><div class="flip__in">
+        <div class="flip__f"><span class="tag">Do</span><h4>Dry it off</h4><span class="hint">tap</span></div>
+        <div class="flip__b"><span class="tag">Do</span><p>Dry with a soft towel or blower after washing or heavy rain to stop water spots forming.</p></div></div></div>
+      <div class="flip dont"><div class="flip__in">
+        <div class="flip__f"><span class="tag">Don't</span><h4>Wipe it dry</h4><span class="hint">tap</span></div>
+        <div class="flip__b"><span class="tag">Don't</span><p>Never wipe dust or bird mess off dry. That is how you put swirls into perfect paint.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="vein-rule"></div>
+
+<!-- TROUBLE -->
+<section>
+  <div class="wrap reveal">
+    <p class="eyebrow">If this happens</p>
+    <h2>Don't stress</h2>
+    <div class="trouble" style="margin-top:22px">
+      <div class="tcard"><h4>Bird droppings or tree sap</h4><p>These are acidic and can etch even coated paint if they bake in the sun. Rinse or gently flush with water as soon as you can. Do not scrub it dry.</p><span class="fix">Rinse now, do not rub &rarr;</span></div>
+      <div class="tcard"><h4>Water spots</h4><p>Usually from a sprinkler, rain, or the car air drying. Most wipe away with a proper wash and a good dry. If they have set in, we can sort them.</p><span class="fix">Book a maintenance wash &rarr;</span></div>
+      <div class="tcard"><h4>It is not beading like it was</h4><p>Over time a coating can get filmed up with road grime. Often a good wash brings the beading back. If not, a refresh from us tops it up.</p><span class="fix">Book a refresh with OMA &rarr;</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MAINTENANCE CTA -->
+<section>
+  <div class="wrap reveal">
+    <div class="mcta">
+      <p class="eyebrow" style="justify-content:center">Keep it protected</p>
+      <h2>Book a<br>maintenance wash</h2>
+      <p>Every few months we deep clean, decontaminate and re-boost your coating so it beads like day one. The easiest way to protect what you paid for.</p>
+      <div class="ctarow">
+        <a class="btn btn--go" href="tel:+61490793033">Call OMA</a>
+        <a class="btn btn--ghost" href="https://instagram.com/oma.autodetailing" target="_blank" rel="noopener">Message us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <img class="flogo" src="__LOGO__" alt="OMA Auto Detailing">
+    <a class="fnum" href="tel:+61490793033">0490&nbsp;793&nbsp;033</a>
+    <a class="fig" href="https://instagram.com/oma.autodetailing" target="_blank" rel="noopener">@oma.autodetailing</a>
+    <p class="loc">OMA Auto Detailing · Lockyer Valley QLD</p>
+  </div>
+</footer>
+
+<nav class="callbar" aria-label="Contact">
+  <a class="call" href="tel:+61490793033">Call 0490 793 033</a>
+  <a class="ig2" href="https://instagram.com/oma.autodetailing" target="_blank" rel="noopener">Instagram</a>
+</nav>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- Scroll reveal ---- */
+  var revs = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    },{threshold:.14});
+    revs.forEach(function(r){io.observe(r);});
+  } else { revs.forEach(function(r){r.classList.add('in');}); }
+
+  /* ---- Timeline tabs ---- */
+  var tabs = document.querySelectorAll('.tl-tab');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click',function(){
+      tabs.forEach(function(t){t.setAttribute('aria-selected','false');});
+      tab.setAttribute('aria-selected','true');
+      document.querySelectorAll('.tl-panel').forEach(function(p){p.classList.remove('active');});
+      var panel = document.getElementById(tab.dataset.tab);
+      panel.classList.add('active');
+      if(tab.dataset.tab==='t1') runGauge();
+    });
+  });
+
+  /* ---- Cure gauge ---- */
+  var gaugeDone=false;
+  function runGauge(){
+    var fill=document.getElementById('gaugeFill'), num=document.getElementById('gaugeNum');
+    if(!fill) return;
+    var target=100, dash=283;
+    if(reduce){ fill.style.strokeDashoffset=0; num.textContent=target; return; }
+    fill.style.strokeDashoffset = dash*(1-target/100);
+    var start=null, dur=2100;
+    function step(ts){ if(!start)start=ts; var p=Math.min((ts-start)/dur,1);
+      num.textContent=Math.round(p*target); if(p<1)requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  }
+  if('IntersectionObserver' in window){
+    var g1=document.querySelector('.gauge');
+    if(g1){ var gio=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting && !gaugeDone){gaugeDone=true; runGauge();}});},{threshold:.5});
+      gio.observe(g1);}
+  } else { runGauge(); }
+
+  /* ---- Flip cards ---- */
+  document.getElementById('flipgrid').addEventListener('click',function(e){
+    var card=e.target.closest('.flip'); if(card) card.classList.toggle('is-flipped');
+  });
+
+  /* ---- Water beading canvas ---- */
+  var wrap=document.getElementById('bead'), cv=document.getElementById('beadCanvas'), ctx=cv.getContext('2d');
+  var W,H,dpr,beads=[],raf;
+  function size(){
+    dpr=Math.min(window.devicePixelRatio||1,2);
+    W=cv.clientWidth; H=cv.clientHeight;
+    cv.width=W*dpr; cv.height=H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    seed();
+  }
+  function Bead(x,y,r){this.x=x;this.y=y;this.r=r;this.vy=0;this.base=x;this.wob=Math.random()*6.28;}
+  function seed(){
+    beads=[]; var n=Math.round((W*H)/5200);
+    n=Math.max(26,Math.min(n,80));
+    for(var i=0;i<n;i++){
+      var r=3+Math.random()*Math.random()*15;
+      beads.push(new Bead(Math.random()*W, Math.random()*H, r));
+    }
+    beads.sort(function(a,b){return a.r-b.r;});
+  }
+  function drawBead(b){
+    var g=ctx.createRadialGradient(b.x-b.r*.35,b.y-b.r*.4,b.r*.1, b.x,b.y,b.r);
+    g.addColorStop(0,'rgba(210,255,238,.95)');
+    g.addColorStop(.25,'rgba(90,190,158,.55)');
+    g.addColorStop(.7,'rgba(10,40,32,.45)');
+    g.addColorStop(1,'rgba(4,10,8,.15)');
+    ctx.beginPath(); ctx.arc(b.x,b.y,b.r,0,6.2832); ctx.fillStyle=g; ctx.fill();
+    // rim light
+    ctx.beginPath(); ctx.arc(b.x,b.y,b.r,-2.4,-0.6); ctx.strokeStyle='rgba(47,211,154,.5)'; ctx.lineWidth=Math.max(.6,b.r*.09); ctx.stroke();
+    // specular
+    ctx.beginPath(); ctx.arc(b.x-b.r*.34,b.y-b.r*.4,Math.max(.8,b.r*.22),0,6.2832); ctx.fillStyle='rgba(255,255,255,.9)'; ctx.fill();
+  }
+  var t=0;
+  function frame(){
+    t+=0.016;
+    // glossy dark panel base
+    var bg=ctx.createLinearGradient(0,0,W,H);
+    bg.addColorStop(0,'#0a1512'); bg.addColorStop(.5,'#05100c'); bg.addColorStop(1,'#0b1a15');
+    ctx.fillStyle=bg; ctx.fillRect(0,0,W,H);
+    // soft emerald sheen
+    var sh=ctx.createRadialGradient(W*.3,H*.2,0,W*.3,H*.2,W*.8);
+    sh.addColorStop(0,'rgba(24,138,99,.22)'); sh.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=sh; ctx.fillRect(0,0,W,H);
+    for(var i=0;i<beads.length;i++){
+      var b=beads[i];
+      if(!reduce){
+        b.x=b.base+Math.sin(t+b.wob)*1.2;              // gentle wobble
+        if(b.r>9){ b.vy+=0.02; b.y+=b.vy;                // big beads slide down
+          if(b.y-b.r>H){ b.y=-b.r; b.vy=0; b.base=Math.random()*W; b.x=b.base; b.r=3+Math.random()*Math.random()*15; } }
+      }
+      drawBead(b);
+    }
+    raf=requestAnimationFrame(frame);
+  }
+  function burst(){ // on tap: re-bead
+    beads.forEach(function(b){ b.r=2+Math.random()*Math.random()*16; b.y=Math.random()*H; b.base=Math.random()*W; b.x=b.base; b.vy=0; });
+    var hint=wrap.querySelector('.taphint'); if(hint) hint.style.display='none';
+  }
+  wrap.addEventListener('click',burst);
+  size(); if(!reduce){frame();} else {frame(); cancelAnimationFrame(raf); frame();}
+  var rt; window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(size,180);});
+})();
+</script>
+</body>
+</html>
