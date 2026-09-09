@@ -10,7 +10,7 @@ from qrcode.image.styles.moduledrawers.pil import RoundedModuleDrawer
 from qrcode.image.styles.colormasks import SolidFillColorMask
 import cv2, numpy as np
 
-URL="https://care.omaautodetailing.com.au"
+URL="https://luka3nglish-commits.github.io/oma-ceramic-care/"
 ROOT=os.path.dirname(os.path.abspath(__file__))
 OUT=os.path.join(ROOT,"qr"); os.makedirs(OUT,exist_ok=True)
 A=os.path.join(ROOT,"assets"); LOGO=os.path.join(A,"logo.png"); MARBLE=os.path.join(A,"marble.jpg")
