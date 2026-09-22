@@ -114,9 +114,70 @@ a{color:var(--em);text-decoration:none}
 .btn.ghost{background:rgba(62,203,156,.10);color:var(--em);border:1px solid var(--line);box-shadow:none}
 .btn:focus-visible{outline:2px solid var(--em);outline-offset:3px}
 .cta-card .lede{max-width:48ch}
+
+/* ===== added visual effects (background · scroll · micro) ===== */
+/* ambient background: slow emerald aurora between the marble and its vignette */
+.bg::before{content:"";position:absolute;inset:-20%;pointer-events:none;
+  background:
+    radial-gradient(38% 30% at 27% 30%,rgba(62,203,156,.16),rgba(62,203,156,0) 70%),
+    radial-gradient(44% 36% at 74% 66%,rgba(14,124,91,.18),rgba(14,124,91,0) 72%),
+    radial-gradient(30% 26% at 60% 18%,rgba(143,227,198,.09),rgba(143,227,198,0) 70%);
+  mix-blend-mode:screen;opacity:.7;animation:auroraDrift 52s ease-in-out infinite alternate}
+.bg.paused::before{animation-play-state:paused}
+@keyframes auroraDrift{
+  0%{transform:translate3d(-2.5%,-1.5%,0) scale(1.04) rotate(-1.5deg)}
+  50%{transform:translate3d(1.5%,2%,0) scale(1.10) rotate(1.2deg)}
+  100%{transform:translate3d(3%,-1%,0) scale(1.05) rotate(-.4deg)}}
+/* faint static film grain for depth */
+.grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.045;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:120px 120px}
+
+/* as-you-scroll: sections settle in as they enter (only when <html class=fx>) */
+html.fx .reveal{animation:none;opacity:0;transform:translateY(16px)}
+html.fx .reveal.inview{opacity:1;transform:none;
+  transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+/* slim scroll-progress line */
+.sc-prog{position:fixed;top:0;left:0;right:0;height:2px;z-index:50;transform:scaleX(0);transform-origin:0 50%;
+  background:linear-gradient(90deg,var(--em-deep),var(--em) 55%,var(--em-soft));
+  box-shadow:0 0 10px rgba(62,203,156,.45);opacity:0;transition:opacity .5s ease;pointer-events:none;will-change:transform}
+html.fx .sc-prog{opacity:1}
+
+/* countdown ring: soft emerald glow, pulses only while curing */
+.ring::before{content:"";position:absolute;inset:-14%;border-radius:50%;pointer-events:none;z-index:-1;
+  background:radial-gradient(circle at 50% 50%,rgba(62,203,156,.28),rgba(62,203,156,.05) 55%,transparent 72%);
+  opacity:0;transform:scale(.92);transition:opacity .8s ease}
+.ring.curing::before{opacity:1;animation:ringPulse 3.6s ease-in-out infinite}
+@keyframes ringPulse{0%,100%{opacity:.4;transform:scale(.93)}50%{opacity:.85;transform:scale(1.02)}}
+
+/* CTA buttons: subtle lift + sheen on hover, refined focus halos */
+.btn{position:relative;overflow:hidden;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .3s ease}
+.btn::after{content:"";position:absolute;top:-50%;bottom:-50%;left:-60%;width:40%;pointer-events:none;opacity:0;
+  transform:translateX(0) skewX(-16deg);background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent)}
+.btn.ghost::after{background:linear-gradient(100deg,transparent,rgba(143,227,198,.20),transparent)}
+@media (hover:hover){
+  .btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(62,203,156,.28)}
+  .btn:hover::after{animation:btnSheen 1s cubic-bezier(.35,.5,.2,1)}}
+.btn:active{transform:translateY(0) scale(.98);transition-duration:.1s}
+@keyframes btnSheen{0%{opacity:0;transform:translateX(0) skewX(-16deg)}15%{opacity:1}85%{opacity:1}100%{opacity:0;transform:translateX(420%) skewX(-16deg)}}
+input[type=date]:focus-visible,.ics:focus-visible,.acc>button:focus-visible{box-shadow:0 0 0 5px rgba(62,203,156,.16)}
+.btn:focus-visible{box-shadow:0 6px 18px rgba(62,203,156,.20),0 0 0 5px rgba(62,203,156,.22)}
+
+/* reduced-motion: disable every new motion, force content visible */
+@media (prefers-reduced-motion:reduce){
+  .bg::before{animation:none!important;transform:none!important}
+  html.fx .reveal{opacity:1!important;transform:none!important;transition:none!important}
+  .ring.curing::before{animation:none!important;opacity:.4;transform:none}
+  .sc-prog{display:none}
+  .btn:hover::after{animation:none!important}
+  .btn:hover,.btn:active{transform:none!important}
+}
 </style>
 
 <div class="bg"></div>
+<script>if('IntersectionObserver' in window && !(window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches)){document.documentElement.className+=(document.documentElement.className?' ':'')+'fx';}</script>
+<div class="grain" aria-hidden="true"></div>
+<div class="sc-prog" id="scProg" aria-hidden="true"></div>
 <main class="wrap">
   <header class="reveal">
     <div class="brand">
@@ -257,7 +318,7 @@ a{color:var(--em);text-decoration:none}
     var v=input.value; if(!v){num.textContent='–';unit.textContent='days to wash';
       prg.style.strokeDashoffset=C;status.className='status';
       status.textContent='Pick your coating date to start the countdown.';
-      sched.innerHTML='<p class="hint">Set your coating date above to see your dates and add reminders.</p>';return;}
+      sched.innerHTML='<p class="hint">Set your coating date above to see your dates and add reminders.</p>';var rE=document.querySelector('.ring');if(rE)rE.classList.remove('curing');return;}
     var start=new Date(v+'T00:00:00'), today=new Date(); today.setHours(0,0,0,0);
     var since=Math.floor((today-start)/DAY), left=Math.max(0,7-since);
     var prog=Math.max(0,Math.min(1,since/7)); prg.style.strokeDashoffset=C*(1-prog);
@@ -265,6 +326,7 @@ a{color:var(--em);text-decoration:none}
       status.className='status';status.innerHTML='<b>Curing.</b> Safe to wash from <b>'+fmt(new Date(start.getTime()+7*DAY))+'</b>.';}
     else{num.textContent='✓';unit.textContent='wash-safe';status.className='status safe';
       status.innerHTML='<b>Wash-safe.</b> Cured enough to wash and maintain from here.';}
+    var rC=document.querySelector('.ring'); if(rC) rC.classList.toggle('curing', left>0);
 
     var miles=[
       ['Safe to first wash','Coating cured. Gentle two-bucket wash from today.',7],
@@ -288,5 +350,45 @@ a{color:var(--em);text-decoration:none}
   var saved=null; try{saved=localStorage.getItem(KEY);}catch(e){} if(saved) input.value=saved;
   input.addEventListener('change',function(){try{localStorage.setItem(KEY,input.value);}catch(e){} render();});
   render();
+})();
+</script>
+<script>
+(function(){
+  var d=document.documentElement,
+      bg=document.querySelector('.bg'),
+      bar=document.getElementById('scProg'),
+      reveals=[].slice.call(document.querySelectorAll('.reveal'));
+  function showAll(){reveals.forEach(function(el){el.classList.add('inview');el.style.transitionDelay='';});}
+  function vis(){ if(bg) bg.classList.toggle('paused', document.hidden); }
+  document.addEventListener('visibilitychange', vis);
+  if(!d.classList.contains('fx')) return;
+  var safety=setTimeout(showAll, 3000);
+  try{
+    var seen=false;
+    var io=new IntersectionObserver(function(ents){
+      ents.forEach(function(e){
+        if(!e.isIntersecting) return;
+        var el=e.target;
+        if(!seen && el.style.animationDelay){
+          el.style.transitionDelay=el.style.animationDelay;
+          el.addEventListener('transitionend',function h(){el.style.transitionDelay='';el.removeEventListener('transitionend',h);});
+        }
+        el.classList.add('inview'); io.unobserve(el);
+      });
+      seen=true;
+    },{rootMargin:'0px 0px -8% 0px',threshold:.12});
+    reveals.forEach(function(el){ io.observe(el); });
+    clearTimeout(safety);
+    if(bar){
+      var maxv=1, ticking=false;
+      function measure(){ maxv=Math.max(1, d.scrollHeight-window.innerHeight); }
+      function frame(){ ticking=false; var y=Math.max(0,window.scrollY||0); bar.style.transform='scaleX('+Math.min(1,y/maxv)+')'; }
+      function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(frame); } }
+      measure(); frame();
+      window.addEventListener('scroll',onScroll,{passive:true});
+      window.addEventListener('resize',function(){ measure(); frame(); },{passive:true});
+      if('ResizeObserver' in window){ new ResizeObserver(measure).observe(document.body); }
+    }
+  }catch(err){ clearTimeout(safety); showAll(); }
 })();
 </script>
